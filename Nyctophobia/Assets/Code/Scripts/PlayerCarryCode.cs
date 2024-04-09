@@ -28,6 +28,7 @@ public class CarryCode : MonoBehaviour
         // If left mouse button is held down
         if (Input.GetMouseButton(0))
         {
+            print("picked up Object");
             if (!hasItem)
             {
                 PickUpObject();
@@ -35,6 +36,7 @@ public class CarryCode : MonoBehaviour
         }
         else // Left mouse button released
         {
+            print("dropped Object");
             if (hasItem)
             {
                 ReleaseObject();
