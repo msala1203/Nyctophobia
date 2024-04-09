@@ -13,6 +13,14 @@ public class PlayerMovement : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimmit = 45.0f;
 
+    public float maxStamina = 100f;
+    public float currentStamina = 0f;
+    public float staminaUseRate = 10f;
+    public float staminaRegainRate = 5f;
+
+    public bool canSprint = true;
+
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     Vector2 rotation = Vector2.zero;
@@ -49,13 +57,41 @@ public class PlayerMovement : MonoBehaviour
             */
         }
 
-        if (Input.GetKey("left shift"))
+
+        if (Input.GetKey("left shift") && canSprint)
         {
-            speed = 7.0f;
+          
+            speed = 10.0f;
+
+            /*
+            currentStamina += staminaUseRate;
+
+            if (currentStamina >= maxStamina)
+            {
+                print("Ran out of stamina");
+                canSprint = false;
+            }
+            /**/
+
         }
         else
         {
+            
             speed = 5.5f;
+            /*
+            if (currentStamina > 0)
+            {
+                print("Recovered stamina");
+                currentStamina -= staminaRegainRate;
+            }
+            else
+            {
+                print("Recovered stamina");
+                currentStamina = 0;
+                canSprint = true;
+            }
+            /**/
+                
         }
 
         moveDirection.y -= gravity * Time.deltaTime;

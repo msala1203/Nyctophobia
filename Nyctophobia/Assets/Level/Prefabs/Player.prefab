@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 7198200358883358741}
   - component: {fileID: 2179540561216650021}
   - component: {fileID: 7513966751508915476}
-  - component: {fileID: 3154262879141225616}
+  - component: {fileID: 6895420981532870834}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -528,7 +528,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3154262879141225616
+--- !u!114 &6895420981532870834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,9 +540,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ef4ff8e7088bd47b9d67d3c6161239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
+  speed: 5.5
   gravity: 20
   playerCamera: {fileID: 8911872661540052534}
   lookSpeed: 2
   lookXLimmit: 45
+  maxStamina: 100
+  currentStamina: 0
+  staminaUseRate: 10
+  staminaRegainRate: 5
+  canSprint: 1
   canMove: 1
