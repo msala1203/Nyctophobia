@@ -56,6 +56,9 @@ void PickUpObject()
 void ReleaseObject()
 {
     ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = false; // make the rigidbody work again
+
+    //ObjectIwantToPickUp drops a little bit off infront of the player
+
     ObjectIwantToPickUp.transform.parent = null; // make the object not be a child of the hands
     hasItem = false;
 }
