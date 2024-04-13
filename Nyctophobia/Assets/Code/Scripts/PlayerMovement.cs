@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimmit = 45.0f;
+    public GameObject GrassTerrain;
+    public GameObject SandTerrain;
 
     public float maxStamina = 100f;
     public float currentStamina = 0f;
@@ -25,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     Vector2 rotation = Vector2.zero;
 
+
+
     [HideInInspector]
     public bool canMove = true;
 
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent < CharacterController>();
         rotation.y = transform.eulerAngles.y;
 
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -41,6 +46,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Ray cast Origin
+        var RcOg = (0, 0, 0);
+        //Ray cast to check terrain
+        //var TerrainRay = Physics.Raycast(RcOg, Vector3.down,LayerMask, 2.0f);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
+        {
+            print("Terrain ray hit the ground");
+
+        }
+        /*if (TerrainRay == hit){
+        print("TerrainRay hit/is hitting terrain");
+
+        }
+
+        */
+
+
+         
         if (characterController.isGrounded)
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -48,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
+          
             /*
             if (Input.GetButton("Jump") && canMove)
             {
