@@ -22,13 +22,16 @@ public class CarryCode : MonoBehaviour
 
 
     void Update()
-{
-    if(canPickUp == true) // if you enter the collider of the object
     {
-        // If left mouse button is held down
+        print("hasItem Bool: " + hasItem + "\ncanPickUp Bool:" + canPickUp);
+
+        if (canPickUp == true) // if you enter the collider of the object
+        {
+        
+            // If left mouse button is held down
         if (Input.GetMouseButton(0))
         {
-            print("picked up Object");
+            //print("picked up Object" + "hasItem Bool: " + hasItem);
             if (!hasItem)
             {
                 PickUpObject();
@@ -36,7 +39,7 @@ public class CarryCode : MonoBehaviour
         }
         else // Left mouse button released
         {
-            print("dropped Object");
+            //print("dropped Object" + "\nhasItem Bool: " + hasItem);
             if (hasItem)
             {
                 ReleaseObject();
@@ -57,7 +60,10 @@ void ReleaseObject()
 {
     ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = false; // make the rigidbody work again
 
-    //ObjectIwantToPickUp drops a little bit off infront of the player
+    // Drop the object slightly in front of the player
+    float dropDistance = 3.0f; // Adjust this value to control how far in front of the player the object is dropped
+    Vector3 dropPosition = transform.position + transform.forward * dropDistance;
+    ObjectIwantToPickUp.transform.position = dropPosition;
 
     ObjectIwantToPickUp.transform.parent = null; // make the object not be a child of the hands
     hasItem = false;
@@ -67,7 +73,7 @@ void ReleaseObject()
 
     private void OnTriggerEnter(Collider other) // to see when the player enters the collider
     {
-        if(other.gameObject.tag == "PickableObject") //on the object you want to pick up set the tag to be anything, in this case "object"
+        if(other.gameObject.tag == "PickableObject" && !hasItem) //on the object you want to pick up set the tag to be anything, in this case "object"
         {
             canPickUp = true;  //set the pick up bool to true
             ObjectIwantToPickUp = other.gameObject; //set the gameobject you collided with to one you can reference
@@ -75,7 +81,11 @@ void ReleaseObject()
     }
     private void OnTriggerExit(Collider other)
     {
-        canPickUp = false; //when you leave the collider set the canpickup bool to false
+        if(!hasItem)
+        {
+            canPickUp = false; //when you leave the collider set the canpickup bool to false
+        }
+           
    
     }
 }
