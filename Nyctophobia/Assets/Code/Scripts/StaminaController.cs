@@ -29,6 +29,7 @@ public class StaminaController : MonoBehaviour
     private void Update()
     {
         print("CurrentStamina: " + playerStamina);
+        updateStaminaValue();
         if (!isSprinting)
         {
             if (playerStamina <= maxStamina)
@@ -60,6 +61,8 @@ public class StaminaController : MonoBehaviour
             playerStamina -= staminaDrain * Time.deltaTime;
             updateStaminaValue();
 
+            
+
             if (playerStamina <= 0)
             {
                 hasRegenerated = false;
@@ -71,5 +74,28 @@ public class StaminaController : MonoBehaviour
     {
         staminaProgressUI.fillAmount = playerStamina / maxStamina;
 
+        float thresholdPercentage = 0.8f;
+
+        if (hasRegenerated)
+        {
+            if (staminaProgressUI.fillAmount <= thresholdPercentage)
+            {
+                // Calculate the adjusted stamina percentage within the range [0, 1]
+                float value = Mathf.InverseLerp(0.0f, thresholdPercentage, staminaProgressUI.fillAmount);
+
+                // Gradually transition color from red to white based on adjusted stamina percentage
+                Color lerpedColor = Color.Lerp(Color.red, Color.white, value);
+                staminaProgressUI.color = lerpedColor;
+            }
+            else
+            {
+                // Set the color to white if stamina fill amount is above 50%
+                staminaProgressUI.color = Color.white;
+            }
+        }
+        else
+        {
+            staminaProgressUI.color = Color.red;
+        }
     }
 }
