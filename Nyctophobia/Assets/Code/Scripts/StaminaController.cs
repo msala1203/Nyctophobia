@@ -11,23 +11,27 @@ public class StaminaController : MonoBehaviour
     [SerializeField] private float maxStamina = 100.0f;
     public bool hasRegenerated = true;
     public bool isSprinting = false;
+    public bool canSprint = true;
 
-    private float staminaDrain = 0.5f;
-    private float staminaRegen = 0.25f;
+    private float staminaDrain = 20f;
+    private float staminaRegen = 10f;
 
     public Image staminaProgressUI;
     public CanvasGroup sliderCanvasGroup;
 
+    
+
     private void Start()
     {
-        staminaProgressUI = GetComponent<Image>();
-        sliderCanvasGroup = GetComponent<CanvasGroup>();
+        //staminaProgressUI = GetComponent<Image>();
+        //sliderCanvasGroup = GetComponent<CanvasGroup>();
     }
     private void Update()
     {
+        print("CurrentStamina: " + playerStamina);
         if (!isSprinting)
         {
-            if (playerStamina <= maxStamina - 0.1)
+            if (playerStamina <= maxStamina)
             {
                 playerStamina += staminaRegen * Time.deltaTime;
                 updateStaminaValue();
@@ -36,16 +40,22 @@ public class StaminaController : MonoBehaviour
                 {
                     sliderCanvasGroup.alpha = 0;
                     hasRegenerated = true;
+                    canSprint = true;
 
                 }
             }
+        }
+        else
+        {
+            Sprinting();
         }
     }
 
     private void Sprinting()
     {
-        if (hasRegenerated)        
+        if (hasRegenerated)
         {
+            sliderCanvasGroup.alpha = 1;
             isSprinting = true;
             playerStamina -= staminaDrain * Time.deltaTime;
             updateStaminaValue();
@@ -53,7 +63,7 @@ public class StaminaController : MonoBehaviour
             if (playerStamina <= 0)
             {
                 hasRegenerated = false;
-                sliderCanvasGroup.alpha = 0;
+                canSprint = false;
             }
         }
     }

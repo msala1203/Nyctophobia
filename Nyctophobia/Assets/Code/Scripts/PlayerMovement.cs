@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimmit = 45.0f;
 
+    public bool isCurrentlyMoving = false;
+
     public StaminaController staminaController;
 
 
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
         {
-            print("Terrain ray hit the ground");
+            //print("Terrain ray hit the ground");
 
         }
         /*if (TerrainRay == hit){
@@ -73,7 +75,17 @@ public class PlayerMovement : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-          
+
+            if (curSpeedX != 0 || curSpeedY != 0)
+            {
+                isCurrentlyMoving = true;
+            }
+            else
+            {
+                isCurrentlyMoving = false;
+            }
+            
+
             /*
             if (Input.GetButton("Jump") && canMove)
             {
@@ -83,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKey("left shift") )
+        if (staminaController.canSprint && Input.GetKey("left shift") && isCurrentlyMoving)
         {
             speed = 10.0f;
             staminaController.isSprinting = true;

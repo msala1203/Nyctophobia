@@ -550,6 +550,7 @@ MonoBehaviour:
   playerCamera: {fileID: 8911872661540052534}
   lookSpeed: 2
   lookXLimmit: 45
+  isCurrentlyMoving: 0
   staminaController: {fileID: 1933586543828642646}
   GrassTerrain: {fileID: 0}
   SandTerrain: {fileID: 0}
@@ -603,7 +604,8 @@ MonoBehaviour:
   playerStamina: 100
   maxStamina: 100
   hasRegenerated: 1
-  isSprinting: 0
+  isSprinting: 1
+  canSprint: 1
   staminaProgressUI: {fileID: 9160713990595700090}
   sliderCanvasGroup: {fileID: 2282750344626136600}
 --- !u!1 &5571161369076671535
@@ -641,8 +643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00088596, y: -354.1}
-  m_SizeDelta: {x: 762.43, y: 42.677}
+  m_AnchoredPosition: {x: 0.00088596, y: -355.02}
+  m_SizeDelta: {x: 762.43, y: 42.678}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9139075351626860469
 CanvasRenderer:
