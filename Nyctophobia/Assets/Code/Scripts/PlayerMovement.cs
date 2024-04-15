@@ -12,15 +12,16 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimmit = 45.0f;
+
+    public bool isCurrentlyMoving = false;
+
+    public StaminaController staminaController;
+
+
     public GameObject GrassTerrain;
     public GameObject SandTerrain;
 
-    public float maxStamina = 100f;
-    public float currentStamina = 0f;
-    public float staminaUseRate = 10f;
-    public float staminaRegainRate = 5f;
-
-    public bool canSprint = true;
+   
 
 
     CharacterController characterController;
@@ -35,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        staminaController = GetComponent<StaminaController>();
+
         characterController = GetComponent < CharacterController>();
         rotation.y = transform.eulerAngles.y;
 
@@ -53,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
         {
-            print("Terrain ray hit the ground");
+            //print("Terrain ray hit the ground");
 
         }
         /*if (TerrainRay == hit){
@@ -72,7 +75,17 @@ public class PlayerMovement : MonoBehaviour
             float curSpeedX = canMove ? speed * Input.GetAxis("Vertical") : 0;
             float curSpeedY = canMove ? speed * Input.GetAxis("Horizontal") : 0;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-          
+
+            if (curSpeedX != 0 || curSpeedY != 0)
+            {
+                isCurrentlyMoving = true;
+            }
+            else
+            {
+                isCurrentlyMoving = false;
+            }
+            
+
             /*
             if (Input.GetButton("Jump") && canMove)
             {
@@ -82,40 +95,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKey("left shift") && canSprint)
+        if (staminaController.canSprint && Input.GetKey("left shift") && isCurrentlyMoving)
         {
-          
             speed = 10.0f;
-
-            /*
-            currentStamina += staminaUseRate;
-
-            if (currentStamina >= maxStamina)
-            {
-                print("Ran out of stamina");
-                canSprint = false;
-            }
-            /**/
-
+            staminaController.isSprinting = true;
         }
         else
         {
-            
             speed = 5.5f;
-            /*
-            if (currentStamina > 0)
-            {
-                print("Recovered stamina");
-                currentStamina -= staminaRegainRate;
-            }
-            else
-            {
-                print("Recovered stamina");
-                currentStamina = 0;
-                canSprint = true;
-            }
-            /**/
-                
+            staminaController.isSprinting = false;
         }
 
         moveDirection.y -= gravity * Time.deltaTime;
