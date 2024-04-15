@@ -12,15 +12,14 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimmit = 45.0f;
+
+    public StaminaController staminaController;
+
+
     public GameObject GrassTerrain;
     public GameObject SandTerrain;
 
-    public float maxStamina = 100f;
-    public float currentStamina = 0f;
-    public float staminaUseRate = 10f;
-    public float staminaRegainRate = 5f;
-
-    public bool canSprint = true;
+   
 
 
     CharacterController characterController;
@@ -35,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        staminaController = GetComponent<StaminaController>();
+
         characterController = GetComponent < CharacterController>();
         rotation.y = transform.eulerAngles.y;
 
@@ -82,40 +83,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (Input.GetKey("left shift") && canSprint)
+        if (Input.GetKey("left shift") )
         {
-          
             speed = 10.0f;
-
-            /*
-            currentStamina += staminaUseRate;
-
-            if (currentStamina >= maxStamina)
-            {
-                print("Ran out of stamina");
-                canSprint = false;
-            }
-            /**/
-
+            staminaController.isSprinting = true;
         }
         else
         {
-            
             speed = 5.5f;
-            /*
-            if (currentStamina > 0)
-            {
-                print("Recovered stamina");
-                currentStamina -= staminaRegainRate;
-            }
-            else
-            {
-                print("Recovered stamina");
-                currentStamina = 0;
-                canSprint = true;
-            }
-            /**/
-                
+            staminaController.isSprinting = false;
         }
 
         moveDirection.y -= gravity * Time.deltaTime;

@@ -9,6 +9,7 @@ public class CarryCode : MonoBehaviour
     GameObject ObjectIwantToPickUp;
     bool hasItem; 
     public GameObject myHands;
+    
 
     private BoxCollider boxCollider;
 
@@ -18,6 +19,7 @@ public class CarryCode : MonoBehaviour
         hasItem = false;
 
         boxCollider = GetComponent<BoxCollider>();
+
     }
 
 
