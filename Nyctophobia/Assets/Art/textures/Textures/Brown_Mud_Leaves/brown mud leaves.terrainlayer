@@ -6,7 +6,7 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewLayer
+  m_Name: brown mud leaves
   m_DiffuseTexture: {fileID: 2800000, guid: fb3953753cf5e4f93be936e9e0286c90, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 0148e32b3e7754bd59cd27754a02b88a, type: 3}
   m_MaskMapTexture: {fileID: 0}
