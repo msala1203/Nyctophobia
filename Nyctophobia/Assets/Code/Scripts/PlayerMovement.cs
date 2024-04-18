@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public StaminaController staminaController;
 
+    public CarryCode playerCarryCode;
 
     public GameObject GrassTerrain;
     public GameObject SandTerrain;
@@ -37,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         staminaController = GetComponent<StaminaController>();
+
+        playerCarryCode = GetComponent<CarryCode>();
 
         characterController = GetComponent < CharacterController>();
         rotation.y = transform.eulerAngles.y;
@@ -95,14 +98,24 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        if (staminaController.canSprint && Input.GetKey("left shift") && isCurrentlyMoving)
+        if (staminaController.canSprint && Input.GetKey("left shift") && isCurrentlyMoving && !playerCarryCode.hasItem)
         {
             speed = 10.0f;
             staminaController.isSprinting = true;
         }
-        else
+        else if(staminaController.canSprint && Input.GetKey("left shift") && isCurrentlyMoving && playerCarryCode.hasItem)
+        {
+            speed = 7.0f;
+            staminaController.isSprinting = true;
+        }
+        else if(isCurrentlyMoving && !playerCarryCode.hasItem)
         {
             speed = 5.5f;
+            staminaController.isSprinting = false;
+        }
+        else
+        {
+            speed = 3.5f;
             staminaController.isSprinting = false;
         }
 

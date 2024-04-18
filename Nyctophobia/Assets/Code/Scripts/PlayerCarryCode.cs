@@ -7,7 +7,7 @@ public class CarryCode : MonoBehaviour
     
     bool canPickUp = false;
     GameObject ObjectIwantToPickUp;
-    bool hasItem; 
+    public bool hasItem; 
     public GameObject myHands;
     
 
