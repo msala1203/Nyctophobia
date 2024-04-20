@@ -1,4 +1,4 @@
-
+#if UNITYEDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -35,3 +35,5 @@ namespace GameBuffs.FreeRealisticTextures
         }
     }
 }
+
+#endif
