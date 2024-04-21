@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
         //Ray cast to check terrain
         //var TerrainRay = Physics.Raycast(RcOg, Vector3.down,LayerMask, 2.0f);
         RaycastHit hit;
