@@ -19,10 +19,15 @@ public class PlayerMovement : MonoBehaviour
 
     public CarryCode playerCarryCode;
 
+    //Sound stuff
+    public AudioClip grassSound;
+    public AudioClip sandSound;
+    public AudioClip rockSound;
     public GameObject GrassTerrain;
     public GameObject SandTerrain;
+    public GameObject RockTerrain;
 
-   
+    
 
 
     CharacterController characterController;
@@ -48,20 +53,71 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
+    private void PlaySound(AudioClip sound)
+    {
+        if (sound != null)
+        {
+            AudioSource.PlayClipAtPoint(sound, transform.position);
+            Debug.Log("Sound played: " + sound.name);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        //Ray cast Origin
-        var RcOg = (0, 0, 0);
+        /*
         //Ray cast to check terrain
         //var TerrainRay = Physics.Raycast(RcOg, Vector3.down,LayerMask, 2.0f);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
         {
             //print("Terrain ray hit the ground");
+            if (hit.collider != null)
+            {
+                Renderer renderer = hit.collider.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    Texture texture1 = renderer.material.mainTexture;
+                }
+                else
+                {
+                    Debug.Log("Renderer component isn't found");
+                }
 
+            }
+            else
+            {
+                Debug.Log("Collider component not found");
+            }
+            //Check texture
+            Texture texture = hit.collider.GetComponent<Renderer>().material.mainTexture;
+            Debug.Log("Raycast hit something: " + hit.collider.name);
+            //Play the sound based on texture after making sure texture isn't nothing
+            if (texture.name.Contains("Forest"))
+            {
+                PlaySound(grassSound);
+                Debug.Log("Grass detected!");
+            }
+            else if (texture.name.Contains("Sand"))
+            {
+                PlaySound(sandSound);
+                Debug.Log("Sand detected!");
+            }
+            else if (texture.name.Contains("Rock"))
+            {
+                PlaySound(rockSound);
+                Debug.Log("Rock detected!");
+            }
+            else
+            {
+                Debug.Log("Raycast didn't hit anything.");
+            }
         }
+        else
+        {
+            Debug.Log("Raycast hit nothing");
+        }
+        //Check if it's nothing first
+
         /*if (TerrainRay == hit){
         print("TerrainRay hit/is hitting terrain");
 
@@ -131,5 +187,7 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
+        
     }
+
 }
