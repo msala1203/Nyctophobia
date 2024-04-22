@@ -44,6 +44,7 @@ public class BoatCode : MonoBehaviour
 
         if (hasMotor && hasFuel && isPatched)
         {
+            print("Boat Fixed");
             isBroken = false;
         }
 
