@@ -5,6 +5,8 @@ using UnityEngine;
 public class MonsterTotal : MonoBehaviour
 {
     //Variables
+    public GameObject monsterPrefab;
+
     //5 minute delay
     public float spawnDelay = 10f;
     //1 minute after delay
@@ -59,8 +61,8 @@ public class MonsterTotal : MonoBehaviour
                 {
                     spotted = true;
                     Debug.Log("Monster spotted!");
-                    //Add your code to despawn the monster when spotted by the player
-                    //For example, you could disable the monster GameObject or play a despawn animation
+                    //Add code to despawn the monster when spotted by the player
+                    
                 }
             }
         }
@@ -75,7 +77,16 @@ public class MonsterTotal : MonoBehaviour
         randomDirection += player.transform.position;
         //Make sure monster spawns on the same level y level
         randomDirection.y = 0f;
-        monsterTransform = Instantiate(gameObject, randomDirection, Quaternion.identity).transform;
+
+        //Instantiate the monster prefab
+        monsterTransform = Instantiate(monsterPrefab, randomDirection, Quaternion.identity).transform;
+
+        //Rotation to face the correct direction
+        Vector3 direction = player.transform.position - monsterTransform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        monsterTransform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+
+
 
         spawned = true;
     }
