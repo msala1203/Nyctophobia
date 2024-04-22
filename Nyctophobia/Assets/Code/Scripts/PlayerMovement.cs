@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -26,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject GrassTerrain;
     public GameObject SandTerrain;
     public GameObject RockTerrain;
+    public Scene Level1;
+    public Scene Level2;
+    public Scene Level3;
 
     
 
