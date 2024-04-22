@@ -31633,7 +31633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa220f6814504e43aab7c0d0fcf6d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: IslandLevel_
+  sceneToLoad: IslandLevel
   destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!43 &1584139524
 Mesh:
