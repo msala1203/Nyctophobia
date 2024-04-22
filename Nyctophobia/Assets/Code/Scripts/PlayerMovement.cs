@@ -95,17 +95,17 @@ public class PlayerMovement : MonoBehaviour
             if (texture.name.Contains("Forest"))
             {
                 PlaySound(grassSound);
-                Debug.Log("Grass detected!");
+                
             }
             else if (texture.name.Contains("Sand"))
             {
                 PlaySound(sandSound);
-                Debug.Log("Sand detected!");
+                
             }
             else if (texture.name.Contains("Rock"))
             {
                 PlaySound(rockSound);
-                Debug.Log("Rock detected!");
+                
             }
             else
             {
