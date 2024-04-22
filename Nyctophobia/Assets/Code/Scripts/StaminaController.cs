@@ -28,7 +28,7 @@ public class StaminaController : MonoBehaviour
     }
     private void Update()
     {
-        print("CurrentStamina: " + playerStamina);
+        //print("CurrentStamina: " + playerStamina);
         updateStaminaValue();
         if (!isSprinting)
         {
