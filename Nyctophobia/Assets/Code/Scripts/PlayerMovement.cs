@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -23,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip grassSound;
     public AudioClip sandSound;
     public AudioClip rockSound;
-    public GameObject GrassTerrain;
-    public GameObject SandTerrain;
-    public GameObject RockTerrain;
+    
+    
+
 
     
 
@@ -67,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         
         //Ray cast to check terrain
         //var TerrainRay = Physics.Raycast(RcOg, Vector3.down,LayerMask, 2.0f);
+        /*
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -Vector3.up, out hit))
         {
@@ -89,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Collider component not found");
             }
             //Check texture
-            Texture texture = hit.collider.GetComponent<Renderer>().material.mainTexture;
+            Texture texture = hit.collider.GetTexture<Renderer>();
             Debug.Log("Raycast hit something: " + hit.collider.name);
             //Play the sound based on texture after making sure texture isn't nothing
             if (texture.name.Contains("Forest"))
