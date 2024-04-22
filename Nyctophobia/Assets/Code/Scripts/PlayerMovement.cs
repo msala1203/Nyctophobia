@@ -94,16 +94,22 @@ public class PlayerMovement : MonoBehaviour
             //Play the sound based on texture after making sure texture isn't nothing
             if (texture.name.Contains("Forest"))
             {
+                //if moving
+                //if sound is playing don't play it again
                 PlaySound(grassSound);
                 
             }
             else if (texture.name.Contains("Sand"))
             {
+                //if moving
+                //if sound is playing don't play it again
                 PlaySound(sandSound);
                 
             }
             else if (texture.name.Contains("Rock"))
             {
+                //if moving
+                //if sound is playing don't play it again
                 PlaySound(rockSound);
                 
             }
