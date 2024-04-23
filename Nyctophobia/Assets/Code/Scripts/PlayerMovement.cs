@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -20,23 +19,17 @@ public class PlayerMovement : MonoBehaviour
 
     public CarryCode playerCarryCode;
 
-    //Sound stuff
-    public AudioClip grassSound;
-    public AudioClip sandSound;
-    public AudioClip rockSound;
     public GameObject GrassTerrain;
     public GameObject SandTerrain;
-    public GameObject RockTerrain;
 
-    public string level1Name = "IslandLevel";
-    public string level2Name = "CaveLevelV3";
-    public string level3Name = "VillageLevel";
-    private AudioSource audioSource;
+   
 
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     Vector2 rotation = Vector2.zero;
+
+    bool isPaused = false;
 
 
 
@@ -56,120 +49,21 @@ public class PlayerMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
 
-        //Sound schtuff
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            //If AudioSource component is not found, add it
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-    }
-    
-    private void PlaySound(AudioClip sound, float volume)
-    {
-        if (sound != null)
-        {
-            audioSource.clip = sound;
-            audioSource.volume = volume;
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-                Debug.Log("Sound played: " + sound.name);
-            }
-        }
-    }
-    //Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
-        //Check the current scene
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
-        //Play sound based on the current scene
-        if (isCurrentlyMoving)
-        {
-            if (sceneName == level1Name)
-            {
-                PlaySound(grassSound, 1.0f);
-                Debug.Log("Playing grassSound");
-            }
-            else if (sceneName == level2Name)
-            {
-                PlaySound(sandSound, 2.0f);
-                Debug.Log("Playing sandSound");
-            }
-            else if (sceneName == level3Name)
-            {
-                PlaySound(rockSound, 1.0f);
-                Debug.Log("Playing rockSound");
-            }
-            else
-            {
-                Debug.Log("Unknown level: " + sceneName);
-            }
-        }
-        else
-        {
-            audioSource.Stop();
-        }
-
-        
-    
-        /*
+        //Ray cast Origin
+        var RcOg = (0, 0, 0);
         //Ray cast to check terrain
         //var TerrainRay = Physics.Raycast(RcOg, Vector3.down,LayerMask, 2.0f);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
         {
             //print("Terrain ray hit the ground");
-            if (hit.collider != null)
-            {
-                Renderer renderer = hit.collider.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    Texture texture1 = renderer.material.mainTexture;
-                }
-                else
-                {
-                    Debug.Log("Renderer component isn't found");
-                }
 
-            }
-            else
-            {
-                Debug.Log("Collider component not found");
-            }
-            //Check texture
-            Texture texture = hit.collider.GetComponent<Renderer>().material.mainTexture;
-            Debug.Log("Raycast hit something: " + hit.collider.name);
-            //Play the sound based on texture after making sure texture isn't nothing
-            if (texture.name.Contains("Forest"))
-            {
-                PlaySound(grassSound);
-                Debug.Log("Grass detected!");
-            }
-            else if (texture.name.Contains("Sand"))
-            {
-                PlaySound(sandSound);
-                Debug.Log("Sand detected!");
-            }
-            else if (texture.name.Contains("Rock"))
-            {
-                PlaySound(rockSound);
-                Debug.Log("Rock detected!");
-            }
-            else
-            {
-                Debug.Log("Raycast didn't hit anything.");
-            }
         }
-        else
-        {
-            Debug.Log("Raycast hit nothing");
-        }
-        //Check if it's nothing first
-
         /*if (TerrainRay == hit){
         print("TerrainRay hit/is hitting terrain");
 
@@ -239,7 +133,29 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
+
+        
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //print("is being fliped");
+            isPaused = !isPaused;
+
+            if(isPaused)
+            {
+                print("is paused");
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+              
+            }
+            else if(!isPaused)
+            {
+                //print("is not paused");
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+               
+            }
+            
+        }
         
     }
-
 }
