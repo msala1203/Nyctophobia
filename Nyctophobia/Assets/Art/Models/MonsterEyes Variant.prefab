@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &80020626944565434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.923256
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.141264
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -694561296001359787, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d93ecc50a7ba5e448aa09811bca6c7f9, type: 2}
+    - target: {fileID: 919132149155446097, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_Name
+      value: MonsterEyes Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6448678818323749754, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d93ecc50a7ba5e448aa09811bca6c7f9, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1916317947463974391}
+  m_SourcePrefab: {fileID: 100100000, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+--- !u!1 &998993759229255147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+  m_PrefabInstance: {fileID: 80020626944565434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1916317947463974391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998993759229255147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5333969c73942f41aca07c29af2e5f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterPrefab: {fileID: 919132149155446097, guid: f1f80a1045c0c3541926d81f66f0ac92, type: 3}
+  spawnDelay: 10
+  respawner: 60
+  spawnRadius: 10
+  moveSpeed: 5
