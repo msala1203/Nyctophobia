@@ -66,11 +66,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private void PlaySound(AudioClip sound)
+    private void PlaySound(AudioClip sound, float volume)
     {
         if (sound != null)
         {
             audioSource.clip = sound;
+            audioSource.volume = volume;
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
@@ -90,17 +91,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if (sceneName == level1Name)
             {
-                PlaySound(grassSound);
+                PlaySound(grassSound, 1.0f);
                 Debug.Log("Playing grassSound");
             }
             else if (sceneName == level2Name)
             {
-                PlaySound(sandSound);
+                PlaySound(sandSound, 2.0f);
                 Debug.Log("Playing sandSound");
             }
             else if (sceneName == level3Name)
             {
-                PlaySound(rockSound);
+                PlaySound(rockSound, 1.0f);
                 Debug.Log("Playing rockSound");
             }
             else
