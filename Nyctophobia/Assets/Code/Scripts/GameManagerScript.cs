@@ -1,48 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; // Include the SceneManager namespace
 
 public class GameManagerScript : MonoBehaviour
 {
-   public GameObject gameOverUI;
-   public GameObject player;
+    public GameObject gameOverUI;
+    public GameObject player;
+
     void Start()
     {
-        Cursor.visable = false;
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (gameOverUI.activeInHierarchy)
         {
-            Cursor.visable = true;
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
-            Cursor.visable - false;
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
-    public void gameOver()
+    public void GameOver()
     {
         gameOverUI.SetActive(true);
     }
 
-    public void restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void mainMenu()
+    public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void quit()
+    public void Quit()
     {
         Application.Quit();
     }
