@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686463926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -17144,6 +17144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a5fc18a15980f4db76e7d4acddb04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 640528648}
+  player: {fileID: 1887374327}
 --- !u!4 &686463928
 Transform:
   m_ObjectHideFlags: 0
@@ -38834,7 +38836,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 686463926}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
         m_MethodName: 
         m_Mode: 1
@@ -49068,6 +49070,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3951314879017707652, guid: d019a9966ed194468b773c8f99d84572, type: 3}
   m_PrefabInstance: {fileID: 2030630967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1887374327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5545654717376996980, guid: dfa2d1b4fb357ef4aac0dcfc097e36a2, type: 3}
+  m_PrefabInstance: {fileID: 1125847676}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1887638251 stripped
 Transform:
