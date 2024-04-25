@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 461596798432895851, guid: e14ae13a4cf1ea24b9750b18a34afbb7, type: 3}
       propertyPath: m_Name
-      value: M_Realistic7_1 Variant
+      value: Tree 1 COLLIDER
       objectReference: {fileID: 0}
     - target: {fileID: 949199021652359633, guid: e14ae13a4cf1ea24b9750b18a34afbb7, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 949199021652359633, guid: e14ae13a4cf1ea24b9750b18a34afbb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949199021652359633, guid: e14ae13a4cf1ea24b9750b18a34afbb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 949199021652359633, guid: e14ae13a4cf1ea24b9750b18a34afbb7, type: 3}
       propertyPath: m_LocalPosition.z

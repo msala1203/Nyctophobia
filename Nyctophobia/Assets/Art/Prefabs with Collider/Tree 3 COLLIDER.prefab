@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: db8c97746c09a4140a5a3e7796bb755b, type: 2}
     - target: {fileID: 8190279314498814514, guid: 1ec774b6e9f198945bbb8f30a462b372, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8190279314498814514, guid: 1ec774b6e9f198945bbb8f30a462b372, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8190279314498814514, guid: 1ec774b6e9f198945bbb8f30a462b372, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 8190279314498814514, guid: 1ec774b6e9f198945bbb8f30a462b372, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8854753105269414024, guid: 1ec774b6e9f198945bbb8f30a462b372, type: 3}
       propertyPath: m_Name
-      value: M_Realistic7_3 Variant
+      value: Tree 3 COLLIDER
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
