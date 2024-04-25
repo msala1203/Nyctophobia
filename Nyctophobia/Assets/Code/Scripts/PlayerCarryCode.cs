@@ -29,26 +29,21 @@ public class CarryCode : MonoBehaviour
 
         if (canPickUp == true) // if you enter the collider of the object
         {
-        
-            // If left mouse button is held down
-        if (Input.GetMouseButton(0))
-        {
-            //print("picked up Object" + "hasItem Bool: " + hasItem);
-            if (!hasItem)
+            if (Input.GetMouseButtonDown(0)) // If left mouse button is clicked
             {
-                PickUpObject();
-            }
-        }
-        else // Left mouse button released
-        {
-            //print("dropped Object" + "\nhasItem Bool: " + hasItem);
-            if (hasItem)
-            {
-                ReleaseObject();
+                if (!hasItem)
+                {
+                    // Pick up the object if not already holding something
+                    PickUpObject();
+                }
+                else
+                {
+                    // Drop the object if already holding something
+                    ReleaseObject();
+                }
             }
         }
     }
-}
 
     void PickUpObject()
     {
@@ -59,52 +54,43 @@ public class CarryCode : MonoBehaviour
         hasItem = true;
     }
 
+    /*
+   IEnumerator ReleaseObject()
+{
+    ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = false; // Reactivate physics
 
-    void ReleaseObject()
+    bool validDropPositionFound = false;
+    float checkDistance = 3.0f; // Initial distance to drop the object
+    float maxDistance = 5.0f; // Maximum distance to check
+    while (!validDropPositionFound && checkDistance <= maxDistance)
     {
-        ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = false; // make the rigidbody work again
-
-        // Raycast to find the position in front of the player
-        RaycastHit hit;
-        float raycastDistance = 2.0f; // Adjust this value based on your scene scale and player height
-        Vector3 raycastOrigin = transform.position + (transform.forward * 2.0f); // Adjust forward offset as needed
-        if (Physics.Raycast(raycastOrigin, transform.forward, out hit, raycastDistance))
+        Vector3 proposedDropPosition = transform.position + (transform.forward * checkDistance);
+        // Check for obstacles using a raycast
+        if (!Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, checkDistance))
         {
-            // Place the object slightly in front of the hit point to avoid clipping
-            float offset = 2.0f; // Adjust this value to control how much in front of the hit point the object is placed
-            Vector3 dropPosition = hit.point + (transform.forward * offset);
-
-            // Add an offset above the ground
-            float aboveGroundOffset = 2f; // Adjust this value to control how much above the ground the object is placed
-            dropPosition.y += aboveGroundOffset;
-
-            // Check if the drop position is not too far from the player, to prevent unrealistic drops
-            float maxDropDistance = 6.0f; 
-            if (Vector3.Distance(transform.position, dropPosition) <= maxDropDistance)
+            // No obstacles, check ground level using a downward raycast
+            if (Physics.Raycast(proposedDropPosition, -Vector3.up, out hit))
             {
-                ObjectIwantToPickUp.transform.position = dropPosition;
-            }
-            else
-            {
-                // If drop position is too far, just drop the object slightly in front of the player
-                float upDistance = 2.0f; 
-                dropPosition = transform.position + (transform.forward * upDistance);
-                ObjectIwantToPickUp.transform.position = dropPosition;
+                proposedDropPosition.y = hit.point.y + 0.5f; // Adjust to be slightly above the ground
+                validDropPositionFound = true;
+                ObjectIwantToPickUp.transform.position = proposedDropPosition;
+                ObjectIwantToPickUp.transform.parent = null; // Detach from player
+                hasItem = false;
+                break;
             }
         }
-        else
-        {
-            // If no obstacle detected, just drop the object slightly in front of the player
-            float upDistance = 3.0f; // Adjust this value based on your preference
-            Vector3 dropPosition = transform.position + (transform.forward * upDistance);
-            ObjectIwantToPickUp.transform.position = dropPosition;
-        }
-
-        ObjectIwantToPickUp.transform.parent = null; // make the object not be a child of the hands
-        hasItem = false;
+        checkDistance += 0.5f; // Increment check distance
+        yield return new WaitForSeconds(0.1f); // Wait before next check to reduce performance hit
     }
 
-    /*
+    if (!validDropPositionFound)
+    {
+        Debug.Log("No valid position found to drop the object. Try moving to a clearer area.");
+        // Optionally, handle the situation, e.g., reattach the object or notify the player
+    }
+}
+    /**/
+    
     void ReleaseObject()
     {
         ObjectIwantToPickUp.GetComponent<Rigidbody>().isKinematic = false; // make the rigidbody work again
