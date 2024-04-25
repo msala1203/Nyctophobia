@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095341308121886903}
   - component: {fileID: 6463939445853882579}
+  - component: {fileID: -3794014791180307510}
   m_Layer: 0
   m_Name: Metal_Sheet
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   - {fileID: 7091795348811345986}
   - {fileID: 7001133269284440103}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!205 &6463939445853882579
 LODGroup:
@@ -62,6 +63,27 @@ LODGroup:
     renderers:
     - renderer: {fileID: 979148550133355220}
   m_Enabled: 1
+--- !u!65 &-3794014791180307510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281599974215865455}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.52, y: 2.57, z: 0.04}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1582586108915344117
 GameObject:
   m_ObjectHideFlags: 0
