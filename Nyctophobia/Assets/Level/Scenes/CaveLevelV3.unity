@@ -19955,7 +19955,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: VillageLevel
   spawnPointName: VillageToCave
-  lookHereObjectName: LookHere
 --- !u!64 &959009785
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37488,7 +37487,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: IslandLevel
   spawnPointName: IslandToCave
-  lookHereObjectName: LookHere
 --- !u!43 &1584139524
 Mesh:
   m_ObjectHideFlags: 0
@@ -53185,6 +53183,18 @@ PrefabInstance:
     - target: {fileID: 998993759229255147, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
       propertyPath: m_Name
       value: MonsterEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
+      propertyPath: spawnDelay
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
+      propertyPath: spawnRadius
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
       propertyPath: monsterPrefab
