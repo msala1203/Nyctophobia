@@ -54145,6 +54145,18 @@ PrefabInstance:
       value: MonsterEyes
       objectReference: {fileID: 0}
     - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
+      propertyPath: spawnDelay
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
+      propertyPath: spawnRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916317947463974391, guid: fb6446e4b123ecd4e8e543a2dd19dfc7, type: 3}
       propertyPath: monsterPrefab
       value: 
       objectReference: {fileID: 7254671067202405811, guid: f10b039e749171f419b55c36185d827c, type: 3}
