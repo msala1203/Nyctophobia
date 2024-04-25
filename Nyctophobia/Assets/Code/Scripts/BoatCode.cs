@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class BoatCode : MonoBehaviour
 {
-    bool isBroken = true;
     bool hasMotor = false;
     bool hasFuel = false;
     bool isPatched = false;
 
-    //public Transform potentialChild;
     string nameOfHeldObject = "none";
 
     public GameObject playerHand;
 
-    // Start is called before the first frame update
     void Start()
     {
-        isBroken = true;
+        // Initialize variables
         hasMotor = false;
         hasFuel = false;
         isPatched = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (nameOfHeldObject == "Motor")
@@ -45,13 +41,10 @@ public class BoatCode : MonoBehaviour
         if (hasMotor && hasFuel && isPatched)
         {
             print("Boat Fixed");
-            isBroken = false;
         }
-
-
     }
 
-    private void OnTriggerEnter(Collider other) // to see when the boat has an object in its range
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PickableObject")
         {
@@ -62,15 +55,5 @@ public class BoatCode : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
-
-
-
     }
-    
-    /*
-    private void OnTriggerExit(Collider other)
-    {
-
-    }
-    */
 }
