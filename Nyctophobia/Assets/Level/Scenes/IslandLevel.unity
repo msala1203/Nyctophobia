@@ -21333,11 +21333,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f01c4ea244c74a239b391ceee872856, type: 3}
-<<<<<<< HEAD
---- !u!1 &640528648
-=======
 --- !u!1 &638889769
->>>>>>> JuicyJuice
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21345,13 +21341,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 640528649}
-  - component: {fileID: 640528651}
-  - component: {fileID: 640528650}
-  m_Layer: 5
-  m_Name: GameOverScreen
-=======
   - component: {fileID: 638889774}
   - component: {fileID: 638889773}
   - component: {fileID: 638889772}
@@ -21359,43 +21348,17 @@ GameObject:
   - component: {fileID: 638889770}
   m_Layer: 0
   m_Name: InvisibleBorder1 (1)
->>>>>>> JuicyJuice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!224 &640528649
-RectTransform:
-=======
 --- !u!64 &638889770
 MeshCollider:
->>>>>>> JuicyJuice
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 640528648}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1476730409}
-  - {fileID: 1350055693}
-  - {fileID: 35866096}
-  m_Father: {fileID: 1125847677}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0036621094, y: 1.2000732}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &640528650
-=======
   m_GameObject: {fileID: 638889769}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -21463,40 +21426,11 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &638889773
->>>>>>> JuicyJuice
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 640528648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.028301895, g: 0.028301895, b: 0.028301895, a: 0.654902}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &640528651
-CanvasRenderer:
-=======
   m_GameObject: {fileID: 638889769}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -22621,15 +22555,10 @@ CanvasRenderer:
   m_SelectedVertices: 
 --- !u!4 &638889774
 Transform:
->>>>>>> JuicyJuice
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 640528648}
-  m_CullTransparentMesh: 1
-=======
   m_GameObject: {fileID: 638889769}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -41132.2, y: 243.9, z: -18974.6}
@@ -22639,7 +22568,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
->>>>>>> JuicyJuice
 --- !u!1001 &641187554
 PrefabInstance:
   m_ObjectHideFlags: 0
