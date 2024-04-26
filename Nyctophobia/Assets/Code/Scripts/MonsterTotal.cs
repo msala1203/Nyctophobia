@@ -23,13 +23,19 @@ public class MonsterTotal : MonoBehaviour
     private float respawnTimer;
     private Transform monsterTransform;
 
-    
+    public AudioSource audioSource;
+
+    public AudioClip monsterCry;
+
+
     void Start()
     {
         //Get all the variables together
         player = GameObject.FindGameObjectWithTag("Player");
         spawnTimer = spawnDelay;
         respawnTimer = respawner;
+
+        audioSource.clip = monsterCry;
     }
 
     
@@ -41,6 +47,7 @@ public class MonsterTotal : MonoBehaviour
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0)
             {
+                audioSource.PlayOneShot(monsterCry);
                 SpawnMonster();
                 Debug.Log("Monster spawned!");
             }
