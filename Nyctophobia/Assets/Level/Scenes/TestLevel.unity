@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2107326950005874078, guid: f76129a03b780734cae3cc1bd75281a1, type: 3}
+      propertyPath: Ambience
+      value: 
+      objectReference: {fileID: 8300000, guid: 60cf77fe5cfe14c41b16931e517e75e3, type: 3}
+    - target: {fileID: 2107326950005874078, guid: f76129a03b780734cae3cc1bd75281a1, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3434293017302493452, guid: f76129a03b780734cae3cc1bd75281a1, type: 3}
       propertyPath: m_RootOrder
       value: 1

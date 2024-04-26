@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - audioSource: {fileID: 6111202881756852255, guid: 4fdf4d87d7e64b445875862a2380ca51, type: 3}
+  - audioSource: {instanceID: 0}
   - ambientClipIsland: {fileID: 8300000, guid: 60cf77fe5cfe14c41b16931e517e75e3, type: 3}
   - ambientClipCave: {fileID: 8300000, guid: c58357a04b2433242943ee288044c647, type: 3}
   - ambientClipVillage: {fileID: 8300000, guid: 60cf77fe5cfe14c41b16931e517e75e3, type: 3}

@@ -19,14 +19,17 @@ public class PlayerMovement : MonoBehaviour
 
     public CarryCode playerCarryCode;
 
-    public GameObject GrassTerrain;
-    public GameObject SandTerrain;
+    //public GameObject GrassTerrain;
+    //public GameObject SandTerrain;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     Vector2 rotation = Vector2.zero;
 
     bool isPaused = false;
+
+    //public AudioSource audioSource;
+    //public AudioClip Ambience;
 
     [HideInInspector]
     public bool canMove = true;
@@ -41,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //audioSource.clip = Ambience;
+        //audioSource.Play();
     }
 
     // Update is called once per frame

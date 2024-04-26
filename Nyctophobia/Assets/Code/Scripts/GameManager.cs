@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    /*
+    
     public AudioSource audioSource; // Attach the AudioSource component in the Inspector
 
     // Declare individual AudioClip variables for each scene
     public AudioClip ambientClipIsland;
     public AudioClip ambientClipCave;
     public AudioClip ambientClipVillage;
-    */
+    
     void Awake()
     {
         if (Instance == null)
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        /*
+        
         // Ensure the AudioSource component is enabled
         if (!audioSource.enabled)
         {
@@ -36,10 +36,10 @@ public class GameManager : MonoBehaviour
 
         // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
-        */
+        
     }
 
-    /*
+    
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayAudioBasedOnScene(scene.name);
@@ -75,6 +75,6 @@ public class GameManager : MonoBehaviour
         // Unsubscribe to prevent memory leaks
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    */
+    
 
 }
