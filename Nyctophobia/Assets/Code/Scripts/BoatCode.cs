@@ -10,7 +10,9 @@ public class BoatCode : MonoBehaviour
 
     string nameOfHeldObject = "none";
 
-    public GameObject playerHand;
+    public GameObject Motor;
+    public GameObject Fuel;
+    public GameObject Metal_Sheet;
 
     void Start()
     {
@@ -18,22 +20,29 @@ public class BoatCode : MonoBehaviour
         hasMotor = false;
         hasFuel = false;
         isPatched = false;
+
+        Motor.SetActive(false);
+        Fuel.SetActive(false);
+        Metal_Sheet.SetActive(false);
     }
 
     void Update()
     {
         if (nameOfHeldObject == "Motor")
         {
+            Motor.SetActive(true);
             hasMotor = true;
             nameOfHeldObject = "none";
         }
         else if (nameOfHeldObject == "Fuel")
         {
+            Fuel.SetActive(true);
             hasFuel = true;
             nameOfHeldObject = "none";
         }
         else if (nameOfHeldObject == "Metal_Sheet")
         {
+            Metal_Sheet.SetActive(true);
             isPatched = true;
             nameOfHeldObject = "none";
         }
@@ -46,14 +55,10 @@ public class BoatCode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PickableObject")
-        {
-            Transform otherTransform = other.gameObject.transform;
-            if (otherTransform.parent != playerHand.transform)
+            if (other.tag == "PickableObject")
             {
                 nameOfHeldObject = other.gameObject.name;
                 Destroy(other.gameObject);
             }
-        }
     }
 }

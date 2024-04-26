@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -28,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     bool isPaused = false;
 
-    //public AudioSource audioSource;
-    //public AudioClip Ambience;
+    public AudioSource audioSource;
+    public AudioClip forestFootsteps;
+    public AudioClip caveFootsteps;
+    public AudioClip sandFootsteps;
 
     [HideInInspector]
     public bool canMove = true;
@@ -45,19 +48,38 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //audioSource.clip = Ambience;
-        //audioSource.Play();
+    }
+
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case "IslandLevel":
+                audioSource.clip = sandFootsteps;
+                break;
+            case "CaveLevelV3":
+                audioSource.clip = caveFootsteps;
+                break;
+            case "VillageLevel":
+                audioSource.clip = forestFootsteps;
+                break;
+            default:
+                return; // Optionally handle unexpected scenes
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
-        {
-            //print("Terrain ray hit the ground");
-        }
-        */
         
         if (characterController.isGrounded)
         {
@@ -103,8 +125,37 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotation.x, 0, 0);
             transform.eulerAngles = new Vector2(0, rotation.y);
         }
+
+        if (isCurrentlyMoving)
+        {
+            if (staminaController.isSprinting) // Assuming isSprinting is true when sprinting
+            {
+                audioSource.pitch = 1.5f; // Increase the pitch when sprinting
+            }
+            else
+            {
+                audioSource.pitch = 1.0f; // Normal pitch when not sprinting
+            }
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+
+        if (isCurrentlyMoving && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+            print("is Audio Playing: " + audioSource.isPlaying);
+        }
+        else if (!isCurrentlyMoving && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
         
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             isPaused = !isPaused;
 
@@ -118,6 +169,20 @@ public class PlayerMovement : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+
+        }
+
+        if (transform.position.y < -10)
+        {
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+            if (spawnPoint != null)
+            {
+                characterController.enabled = false;
+                transform.position = spawnPoint.transform.position;
+                characterController.enabled = true;
+            }
         }
     }
+
+    
 }
