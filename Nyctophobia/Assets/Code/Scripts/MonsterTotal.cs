@@ -80,7 +80,7 @@ public class MonsterTotal : MonoBehaviour
 
         //Instantiate the monster prefab
         monsterTransform = Instantiate(monsterPrefab, randomDirection, Quaternion.identity).transform;
-
+        
         //Rotation to face the correct direction
         Vector3 direction = player.transform.position - monsterTransform.position;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
