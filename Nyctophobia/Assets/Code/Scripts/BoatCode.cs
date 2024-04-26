@@ -10,8 +10,6 @@ public class BoatCode : MonoBehaviour
 
     string nameOfHeldObject = "none";
 
-    public GameObject playerHand;
-
     void Start()
     {
         // Initialize variables
@@ -46,14 +44,10 @@ public class BoatCode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PickableObject")
-        {
-            Transform otherTransform = other.gameObject.transform;
-            if (otherTransform.parent != playerHand.transform)
+            if (other.tag == "PickableObject")
             {
                 nameOfHeldObject = other.gameObject.name;
                 Destroy(other.gameObject);
             }
-        }
     }
 }
