@@ -46,10 +46,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, 25f, LayerMask.GetMask("Default")))
         {
             //print("Terrain ray hit the ground");
         }
+        */
         
         if (characterController.isGrounded)
         {
