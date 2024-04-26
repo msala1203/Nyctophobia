@@ -84,7 +84,8 @@ public class MonsterTotal : MonoBehaviour
         monsterTransform = monsterObject.transform;
 
         //Initial rotation: facing forward
-        monsterTransform.rotation = Quaternion.identity;
+        Quaternion rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y + 90f, 0f);
+        monsterTransform.rotation = rotation;
 
 
 
