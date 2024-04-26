@@ -60409,6 +60409,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 346823841}
+    - target: {fileID: 6236158077332743799, guid: 98cf9a4b3b3f8a64e95996b4fb28ad90, type: 3}
+      propertyPath: ambientClipIsland
+      value: 
+      objectReference: {fileID: 8300000, guid: 60cf77fe5cfe14c41b16931e517e75e3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

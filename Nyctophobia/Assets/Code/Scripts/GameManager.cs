@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
 
 
         audioSource.Play();
+        audioSource.loop = true;
         Debug.Log("Playing audio for: " + sceneName);
     }
 
