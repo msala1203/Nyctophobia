@@ -169,6 +169,20 @@ public class PlayerMovement : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
+
+        }
+
+        if (transform.position.y < -10)
+        {
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+            if (spawnPoint != null)
+            {
+                characterController.enabled = false;
+                transform.position = spawnPoint.transform.position;
+                characterController.enabled = true;
+            }
         }
     }
+
+    
 }

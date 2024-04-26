@@ -475,6 +475,7 @@ MonoBehaviour:
   isCurrentlyMoving: 0
   staminaController: {fileID: 7736061796250002236}
   playerCarryCode: {fileID: 8665698080762533239}
+  player: {fileID: 2065414667668444961}
   audioSource: {fileID: 1974909888577461462}
   forestFootsteps: {fileID: 8300000, guid: b92ba475a2cc7aa4f8439b2669e7d453, type: 3}
   caveFootsteps: {fileID: 8300000, guid: 3374d5d27e61b0448bd89bb9babb0f3b, type: 3}

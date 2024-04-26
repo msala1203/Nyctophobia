@@ -1,18 +1,28 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
-    public AudioSource audioSource; // Attach the AudioSource component in the Inspector
+    public AudioSource audioSource;
 
-    // Declare individual AudioClip variables for each scene
     public AudioClip ambientClipIsland;
     public AudioClip ambientClipCave;
     public AudioClip ambientClipVillage;
-    
+
+    // State variables for objects and boat components
+    public Vector3 motorPosition;
+    public Vector3 fuelPosition;
+    public Vector3 patchPosition;
+    public int motorSceneIndex;
+    public int fuelSceneIndex;
+    public int patchSceneIndex;
+
+    public bool hasMotor;
+    public bool hasFuel;
+    public bool isPatched;
+    public bool boatRepaired;
+
     void Awake()
     {
         if (Instance == null)
@@ -25,21 +35,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        
-        // Ensure the AudioSource component is enabled
+        LoadGameData();
         if (!audioSource.enabled)
         {
             audioSource.enabled = true;
         }
 
-        //print("On load AudioSource: " + audioSource.enabled);
-
-        // Subscribe to the sceneLoaded event
         SceneManager.sceneLoaded += OnSceneLoaded;
-        
     }
 
-    
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayAudioBasedOnScene(scene.name);
@@ -58,24 +62,65 @@ public class GameManager : MonoBehaviour
             case "VillageLevel":
                 audioSource.clip = ambientClipVillage;
                 break;
+            case "MainMenu":
+                audioSource.clip = ambientClipIsland;
+                break;
             default:
-                return; // Optionally handle unexpected scenes
+                return;
         }
-        Debug.Log("GameObject active state: " + gameObject.activeSelf);
-        Debug.Log("AudioSource enabled state: " + audioSource.enabled);
-        Debug.Log("Assigned AudioClip: " + audioSource.clip);
-
-
         audioSource.Play();
         audioSource.loop = true;
-        Debug.Log("Playing audio for: " + sceneName);
     }
 
     void OnDestroy()
     {
-        // Unsubscribe to prevent memory leaks
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    
 
+    // Save and Load methods for game data
+    public void SaveGameData()
+    {
+        SaveObjectData("Motor", motorPosition, motorSceneIndex);
+        SaveObjectData("Fuel", fuelPosition, fuelSceneIndex);
+        SaveObjectData("Patch", patchPosition, patchSceneIndex);
+
+        PlayerPrefs.SetInt("HasMotor", hasMotor ? 1 : 0);
+        PlayerPrefs.SetInt("HasFuel", hasFuel ? 1 : 0);
+        PlayerPrefs.SetInt("IsPatched", isPatched ? 1 : 0);
+        PlayerPrefs.SetInt("BoatRepaired", boatRepaired ? 1 : 0);
+
+        PlayerPrefs.Save();
+    }
+
+    private void SaveObjectData(string objectKey, Vector3 position, int sceneIndex)
+    {
+        PlayerPrefs.SetFloat(objectKey + "PosX", position.x);
+        PlayerPrefs.SetFloat(objectKey + "PosY", position.y);
+        PlayerPrefs.SetFloat(objectKey + "PosZ", position.z);
+        PlayerPrefs.SetInt(objectKey + "SceneIndex", sceneIndex);
+    }
+
+    public void LoadGameData()
+    {
+        motorPosition = LoadObjectPosition("Motor");
+        fuelPosition = LoadObjectPosition("Fuel");
+        patchPosition = LoadObjectPosition("Patch");
+
+        motorSceneIndex = PlayerPrefs.GetInt("MotorSceneIndex");
+        fuelSceneIndex = PlayerPrefs.GetInt("FuelSceneIndex");
+        patchSceneIndex = PlayerPrefs.GetInt("PatchSceneIndex");
+
+        hasMotor = PlayerPrefs.GetInt("HasMotor") == 1;
+        hasFuel = PlayerPrefs.GetInt("HasFuel") == 1;
+        isPatched = PlayerPrefs.GetInt("IsPatched") == 1;
+        boatRepaired = PlayerPrefs.GetInt("BoatRepaired") == 1;
+    }
+
+    private Vector3 LoadObjectPosition(string objectKey)
+    {
+        float x = PlayerPrefs.GetFloat(objectKey + "PosX");
+        float y = PlayerPrefs.GetFloat(objectKey + "PosY");
+        float z = PlayerPrefs.GetFloat(objectKey + "PosZ");
+        return new Vector3(x, y, z);
+    }
 }
